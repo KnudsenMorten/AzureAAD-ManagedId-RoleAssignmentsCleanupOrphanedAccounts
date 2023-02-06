@@ -24,9 +24,9 @@
 #####################################################################################################################
 
 
-    $ManagementGroupName             = "mg-2linkit"   # can be a management group - or tenant id, if entire tenant is included
+    $ManagementGroupName             = "mg-xxxx"   # can be a management group - or tenant id, if entire tenant is included
 
-    $TenantId                        = "f0fa27a0-8e7c-4f63-9a77-ec94786b7c9e"
+    $TenantId                        = "xxxxx"
 
 
 #####################################################################################################################
