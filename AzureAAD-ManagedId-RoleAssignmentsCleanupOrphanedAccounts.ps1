@@ -1,7 +1,7 @@
 ﻿#Requires -Version 5.0
 <#
     .SYNOPSIS
-    This script helps with clean-up of orphaned security principles with role assignments.
+    This script helps with clean-up of orphaned security principals with role assignments.
     Script also add any missing role assignments for managed identity, if missing
 
     .NOTES
@@ -42,6 +42,7 @@
 
     Connect-AzureAD -TenantId $TenantId
     Connect-AzAccount -TenantId $TenantId
+
 
 #####################################################################################################################
 # Getting Management groups - using Azure Resource Graph - limited to children under $ManagementGroupName
@@ -290,14 +291,14 @@
 
 
 #####################################################################################################################
-# Task 1: Remove orphaned security principles role assignments
+# Task 1: Remove orphaned security principals role assignments
 #
-#         This is caused by deleting a  security principle (user, group, managed identity, service principle) BEFORE
+#         This is caused by deleting a  security principal (user, group, managed identity, service principal) BEFORE
 #         removing any role assignment first.
 #####################################################################################################################
 
         Write-Output ""
-        Write-Output "Task 1: Orphaned security principles clean-up in progress ... Please Wait !"
+        Write-Output "Task 1: Orphaned security principals clean-up in progress ... Please Wait !"
 
         # Build array of resource tree (mg, subs, rg)
 
@@ -323,7 +324,7 @@
                 If ($OrphanedAccounts)
                     {
                         Write-Output ""
-                        Write-Output "    Found $($OrphanedAccounts.count) orphaned security principles records"
+                        Write-Output "    Found $($OrphanedAccounts.count) orphaned security principals records"
                         Write-Output ""
 
                         $Orphaned_Accounts_Array += $OrphanedAccounts
@@ -335,7 +336,7 @@
         # Loop - Deletion of orphaned security principals - based on array $Orphaned_Accounts_Array
         ForEach ($Entry in $Orphaned_Accounts_Array)
             {
-                    Write-Output "  Removing orphaned security principles role assignment"
+                    Write-Output "  Removing orphaned security principals role assignment"
                     Write-output ""
                     Write-Output "  $( $Entry | ConvertTo-Json )"
                     $Entry | Remove-AzRoleAssignment
