@@ -34,7 +34,7 @@
 #####################################################################################################################
 <#
     Install-Module -Name Az -Force
-    Install-Module -Name AzureADPreview -Force
+    Install-Module -Name AzureADPreview -Force   # AzureAD version should also be sufficient !
 #>
 
 #####################################################################################################################
